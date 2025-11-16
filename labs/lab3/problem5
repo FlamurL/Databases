@@ -1,0 +1,5 @@
+publisher_sponsors = π publisher_id (Publisher_Sponsor)
+publisher_book_promoters = π publisher_id (Book_Promotion)
+result1 = publisher_sponsors ⨝ Publisher
+result2 = publisher_book_promoters ⨝  result1
+π name (result2)

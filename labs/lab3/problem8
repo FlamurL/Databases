@@ -1,0 +1,8 @@
+outdoor_locations = σ type = 'OUTDOOR' (Location)
+outdoor_fairs = outdoor_locations ⨝ Location.location_id = Fair.location_id Fair
+outdoor_participated = outdoor_fairs ⨝ Fair.fair_id = Book_Promotion.fair_id Book_Promotion
+authors_outdoor = outdoor_participated ⨝ Book_Promotion.author_id = Author.author_id Author
+proj_authors_outdoor = π Author.author_id, Author.artistic_name, Author.nationality (authors_outdoor)
+all_authors = π Author.author_id, Author.artistic_name, Author.nationality (Author)
+authors_not_outdoor = all_authors - proj_authors_outdoor
+π Author.artistic_name, Author.nationality (authors_not_outdoor)

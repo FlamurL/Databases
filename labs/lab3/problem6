@@ -1,0 +1,8 @@
+indoor_locations = σ type = 'INDOOR' (Location)
+indoor_fairs = indoor_locations ⨝ Location.location_id = Fair.location_id Fair
+held_after_2024 = σ date > '2024-01-01' (Held_Fair)
+indoor_fairs_after_2024 = indoor_fairs ⨝ Fair.fair_id = Held_Fair.fair_id held_after_2024
+participated = indoor_fairs_after_2024 ⨝ Fair.fair_id = Book_Promotion.fair_id Book_Promotion
+pub_with_name = participated ⨝ Book_Promotion.publisher_id = Publisher.publisher_id Publisher
+pub_with_sponsor = pub_with_name ⨝ Publisher.publisher_id = Publisher_Sponsor.publisher_id Publisher_Sponsor
+π Publisher.name, Publisher_Sponsor.sponsor (pub_with_sponsor)

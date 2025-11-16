@@ -1,0 +1,6 @@
+small_locations = σ capacity < 2000 (Location)
+long_fairs = σ duration > 5 (Fair)
+fairs_with_small_locations = long_fairs ⨝ Fair.location_id = Location.location_id small_locations
+participated = fairs_with_small_locations ⨝ Fair.fair_id = Book_Promotion.fair_id Book_Promotion
+authors_participated = participated ⨝ Book_Promotion.author_id = Author.author_id Author
+π Author.nationality, Author.artistic_name (authors_participated)

@@ -1,0 +1,3 @@
+publisher_sponsors = π publisher_id (Publisher_Sponsor)
+publisher_book_promoters = π publisher_id (Book_Promotion)
+publisher_sponsors ∪ publisher_book_promoters
